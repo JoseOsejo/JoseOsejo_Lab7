@@ -46,16 +46,12 @@ public class AdministracionEquipo {
         return "AdministracionEquipo{" + "archivoEquipos=" + archivoEquipos + '}';
     }
 
-    //agregarEquipo
-    public void setEquipo(Equipo e) {
-        this.equipos.add(e);
-    }
-
+      
      public void escribirArchivo()throws IOException{
          FileWriter fw = null;
         BufferedWriter bw = null;
         try {
-            fw = new FileWriter(archivoEquipos, false);
+            fw = new FileWriter(archivoEquipos, true);
             bw = new BufferedWriter(fw);
             for (Equipo equipo : equipos) {
                 bw.write(equipo.getNombreEquipo() + ";");
@@ -66,7 +62,8 @@ public class AdministracionEquipo {
                 bw.write(equipo.getGolesFavor() + ";");
                 bw.write(equipo.getGolesContra() + ";");
                 bw.write(equipo.getDiferenciaGoles()+ ";");
-                bw.write(equipo.getPuntos()+ ";");
+                bw.write(equipo.getPuntos()+";");
+                bw.newLine();
             }
             bw.flush();
         } catch (Exception ex) {

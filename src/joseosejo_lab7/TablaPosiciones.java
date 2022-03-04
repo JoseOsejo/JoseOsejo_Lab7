@@ -5,6 +5,9 @@
  */
 package joseosejo_lab7;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author jcoq2
@@ -33,8 +36,16 @@ public class TablaPosiciones extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        equipoNombreTF = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        ModificarEquipo = new javax.swing.JDialog();
+        jPanel4 = new javax.swing.JPanel();
+        modificarEquipoCB = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         barraMenuEquipos = new javax.swing.JMenuBar();
@@ -52,6 +63,11 @@ public class TablaPosiciones extends javax.swing.JFrame {
         jLabel3.setText("Nombre del Equipo");
 
         jButton1.setText("Crear");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -67,7 +83,7 @@ public class TablaPosiciones extends javax.swing.JFrame {
                         .addComponent(jLabel3))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(equipoNombreTF, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(72, 72, 72)
                         .addComponent(jButton1)))
@@ -81,7 +97,7 @@ public class TablaPosiciones extends javax.swing.JFrame {
                 .addGap(63, 63, 63)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(equipoNombreTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(37, 37, 37))
@@ -96,6 +112,73 @@ public class TablaPosiciones extends javax.swing.JFrame {
         CrearEquipoLayout.setVerticalGroup(
             CrearEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jLabel4.setText("Equipos");
+
+        jLabel5.setText("Ingresar nuevo Nombre");
+
+        jButton2.setText("Modificar");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel5)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(80, 80, 80)
+                                .addComponent(modificarEquipoCB, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(122, 122, 122)
+                                .addComponent(jLabel4))))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(jButton2)))
+                .addContainerGap(81, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addComponent(modificarEquipoCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65)
+                .addComponent(jLabel5)
+                .addGap(27, 27, 27)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout ModificarEquipoLayout = new javax.swing.GroupLayout(ModificarEquipo.getContentPane());
+        ModificarEquipo.getContentPane().setLayout(ModificarEquipoLayout);
+        ModificarEquipoLayout.setHorizontalGroup(
+            ModificarEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        ModificarEquipoLayout.setVerticalGroup(
+            ModificarEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -196,13 +279,50 @@ public class TablaPosiciones extends javax.swing.JFrame {
         CrearEquipo.setLocationRelativeTo(null);
         CrearEquipo.setResizable(false);
         CrearEquipo.pack();
-        
+
         // TODO add your handling code here:
     }//GEN-LAST:event_crearEquipoActionPerformed
 
     private void modificarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEquipoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_modificarEquipoActionPerformed
+
+    private boolean equipoRepetido(String nombre) {
+        for (Equipo equipo : admin.getEquipos()) {
+            if (equipo.getNombreEquipo().equalsIgnoreCase(nombre)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //for(Equipo equipo: admin.getEquipos()){
+        //  if(equipo.getNombreEquipo().equalsIgnoreCase(equipoNombreTF.getText())){
+        //    JOptionPane.showMessageDialog(null,"El Equipo ya existe!");
+        //}else{
+        if (equipoRepetido(equipoNombreTF.getText()) == true || equipoNombreTF.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El equipo esta Repetido");
+        } else if(equipoRepetido(equipoNombreTF.getText())== false) {
+            try {
+                admin.getEquipos().add(new Equipo(equipoNombreTF.getText(), 0, 0, 0, 0, 0, 0, 0, 0));
+                admin.escribirArchivo();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error, no se pudo crear el equipo!");
+            }
+
+        }
+
+        /*admin.getEquipos().add(new Equipo(equipoNombreTF.getText(),0,0,0,0,0,0,0,0));
+                DefaultComboBoxModel modifEquipo = (DefaultComboBoxModel) modificarEquipoCB.getModel();
+                for(Equipo e: admin.getEquipos()){
+                    modifEquipo.addElement(e.getNombreEquipo());
+                }
+                modificarEquipoCB.setModel(modifEquipo);*/
+        //}
+        //  }
+        equipoNombreTF.setText("");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -241,21 +361,30 @@ public class TablaPosiciones extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog CrearEquipo;
+    private javax.swing.JDialog ModificarEquipo;
     private javax.swing.JMenuBar barraMenuEquipos;
     private javax.swing.JMenuItem cargarArchivo;
     private javax.swing.JMenuItem crearEquipo;
     private javax.swing.JMenuItem eliminarEquipo;
+    private javax.swing.JTextField equipoNombreTF;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JMenu menuEquipo;
     private javax.swing.JMenu menuPartido;
     private javax.swing.JMenuItem modificarEquipo;
+    private javax.swing.JComboBox<String> modificarEquipoCB;
     private javax.swing.JMenuItem simularPartido;
     private javax.swing.JMenuItem tablaPosicionesEquipos;
     // End of variables declaration//GEN-END:variables
+AdministracionEquipo admin = new AdministracionEquipo("./Equipos.txt");
 }
