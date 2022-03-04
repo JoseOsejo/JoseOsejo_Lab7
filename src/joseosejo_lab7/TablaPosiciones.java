@@ -5,6 +5,7 @@
  */
 package joseosejo_lab7;
 
+import java.util.Random;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -19,6 +20,11 @@ public class TablaPosiciones extends javax.swing.JFrame {
      */
     public TablaPosiciones() {
         initComponents();
+        crearEquipo.setEnabled(false);
+        modificarEquipo.setEnabled(false);
+        eliminarEquipo.setEnabled(false);
+        simularPartido.setEnabled(false);
+        tablaPosicionesEquipos.setEnabled(false);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
     }
@@ -229,6 +235,11 @@ public class TablaPosiciones extends javax.swing.JFrame {
         menuEquipo.add(eliminarEquipo);
 
         cargarArchivo.setText("Cargar Archivo");
+        cargarArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargarArchivoActionPerformed(evt);
+            }
+        });
         menuEquipo.add(cargarArchivo);
 
         barraMenuEquipos.add(menuEquipo);
@@ -302,10 +313,15 @@ public class TablaPosiciones extends javax.swing.JFrame {
         //}else{
         if (equipoRepetido(equipoNombreTF.getText()) == true || equipoNombreTF.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "El equipo esta Repetido");
-        } else if(equipoRepetido(equipoNombreTF.getText())== false) {
+        } else {
             try {
                 admin.getEquipos().add(new Equipo(equipoNombreTF.getText(), 0, 0, 0, 0, 0, 0, 0, 0));
                 admin.escribirArchivo();
+                DefaultComboBoxModel modifModel = (DefaultComboBoxModel) modificarEquipoCB.getModel();
+                for(Equipo equipo: admin.getEquipos()){
+                    modifModel.addElement(equipo);
+                }
+                modificarEquipoCB.setModel(modifModel);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error, no se pudo crear el equipo!");
             }
@@ -323,6 +339,20 @@ public class TablaPosiciones extends javax.swing.JFrame {
         equipoNombreTF.setText("");
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cargarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarArchivoActionPerformed
+         try{
+            admin = new AdministracionEquipo("./Equipos.txt");
+            crearEquipo.setEnabled(true);
+            modificarEquipo.setEnabled(true);
+            eliminarEquipo.setEnabled(true);
+            simularPartido.setEnabled(true);
+            tablaPosicionesEquipos.setEnabled(true);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "No se pudo cargar al archivo!");
+        }        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cargarArchivoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -386,5 +416,6 @@ public class TablaPosiciones extends javax.swing.JFrame {
     private javax.swing.JMenuItem simularPartido;
     private javax.swing.JMenuItem tablaPosicionesEquipos;
     // End of variables declaration//GEN-END:variables
-AdministracionEquipo admin = new AdministracionEquipo("./Equipos.txt");
+AdministracionEquipo admin = new AdministracionEquipo();
+Random numeroRandom = new Random();
 }

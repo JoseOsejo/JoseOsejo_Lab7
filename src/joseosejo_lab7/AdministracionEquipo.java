@@ -20,6 +20,10 @@ public class AdministracionEquipo {
 
     private ArrayList<Equipo> equipos = new ArrayList();
     private File archivoEquipos = null;
+    
+    public AdministracionEquipo(){
+        
+    }
 
     public AdministracionEquipo(String path) {
         archivoEquipos = new File(path);
@@ -63,7 +67,6 @@ public class AdministracionEquipo {
                 bw.write(equipo.getGolesContra() + ";");
                 bw.write(equipo.getDiferenciaGoles()+ ";");
                 bw.write(equipo.getPuntos()+";");
-                bw.newLine();
             }
             bw.flush();
         } catch (Exception ex) {
