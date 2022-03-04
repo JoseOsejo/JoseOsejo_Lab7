@@ -9,13 +9,6 @@ package joseosejo_lab7;
  *
  * @author jcoq2
  */
-public class JoseOsejo_Lab7 {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
+public class Equipo {
     
 }
