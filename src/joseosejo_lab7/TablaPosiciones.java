@@ -16,7 +16,8 @@ public class TablaPosiciones extends javax.swing.JFrame {
      */
     public TablaPosiciones() {
         initComponents();
-
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**
@@ -28,21 +29,180 @@ public class TablaPosiciones extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        CrearEquipo = new javax.swing.JDialog();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        barraMenuEquipos = new javax.swing.JMenuBar();
+        menuEquipo = new javax.swing.JMenu();
+        crearEquipo = new javax.swing.JMenuItem();
+        modificarEquipo = new javax.swing.JMenuItem();
+        eliminarEquipo = new javax.swing.JMenuItem();
+        cargarArchivo = new javax.swing.JMenuItem();
+        menuPartido = new javax.swing.JMenu();
+        simularPartido = new javax.swing.JMenuItem();
+        tablaPosicionesEquipos = new javax.swing.JMenuItem();
+
+        jLabel2.setText("Crear Equipo");
+
+        jLabel3.setText("Nombre del Equipo");
+
+        jButton1.setText("Crear");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(jButton1)))
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel2)
+                .addGap(63, 63, 63)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(37, 37, 37))
+        );
+
+        javax.swing.GroupLayout CrearEquipoLayout = new javax.swing.GroupLayout(CrearEquipo.getContentPane());
+        CrearEquipo.getContentPane().setLayout(CrearEquipoLayout);
+        CrearEquipoLayout.setHorizontalGroup(
+            CrearEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        CrearEquipoLayout.setVerticalGroup(
+            CrearEquipoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/joseosejo_lab7/futImagen.jpg"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 86, Short.MAX_VALUE)
+                .addComponent(jLabel1))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(0, 208, Short.MAX_VALUE))
+        );
+
+        barraMenuEquipos.setToolTipText("");
+
+        menuEquipo.setText("Equipo");
+
+        crearEquipo.setText("Crear");
+        crearEquipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearEquipoActionPerformed(evt);
+            }
+        });
+        menuEquipo.add(crearEquipo);
+
+        modificarEquipo.setText("Modificar");
+        modificarEquipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarEquipoActionPerformed(evt);
+            }
+        });
+        menuEquipo.add(modificarEquipo);
+
+        eliminarEquipo.setText("Eliminar");
+        eliminarEquipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarEquipoActionPerformed(evt);
+            }
+        });
+        menuEquipo.add(eliminarEquipo);
+
+        cargarArchivo.setText("Cargar Archivo");
+        menuEquipo.add(cargarArchivo);
+
+        barraMenuEquipos.add(menuEquipo);
+
+        menuPartido.setText("Partido");
+
+        simularPartido.setText("Simular");
+        simularPartido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                simularPartidoActionPerformed(evt);
+            }
+        });
+        menuPartido.add(simularPartido);
+
+        tablaPosicionesEquipos.setText("Tabla de Posiciones");
+        menuPartido.add(tablaPosicionesEquipos);
+
+        barraMenuEquipos.add(menuPartido);
+
+        setJMenuBar(barraMenuEquipos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 94, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void eliminarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarEquipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eliminarEquipoActionPerformed
+
+    private void simularPartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simularPartidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_simularPartidoActionPerformed
+
+    private void crearEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearEquipoActionPerformed
+        CrearEquipo.setVisible(true);
+        CrearEquipo.setLocationRelativeTo(null);
+        CrearEquipo.setResizable(false);
+        CrearEquipo.pack();
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_crearEquipoActionPerformed
+
+    private void modificarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEquipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modificarEquipoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -80,5 +240,22 @@ public class TablaPosiciones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog CrearEquipo;
+    private javax.swing.JMenuBar barraMenuEquipos;
+    private javax.swing.JMenuItem cargarArchivo;
+    private javax.swing.JMenuItem crearEquipo;
+    private javax.swing.JMenuItem eliminarEquipo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JMenu menuEquipo;
+    private javax.swing.JMenu menuPartido;
+    private javax.swing.JMenuItem modificarEquipo;
+    private javax.swing.JMenuItem simularPartido;
+    private javax.swing.JMenuItem tablaPosicionesEquipos;
     // End of variables declaration//GEN-END:variables
 }

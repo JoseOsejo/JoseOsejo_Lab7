@@ -5,10 +5,12 @@
  */
 package joseosejo_lab7;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -53,12 +55,18 @@ public class AdministracionEquipo {
          FileWriter fw = null;
         BufferedWriter bw = null;
         try {
-            fw = new FileWriter(archivo, false);
+            fw = new FileWriter(archivoEquipos, false);
             bw = new BufferedWriter(fw);
-            for (Persona t : listaPersonas) {
-                bw.write(t.getCodigo() + ";");
-                bw.write(t.getNombre() + ";");
-                bw.write(t.getedad() + ";");
+            for (Equipo equipo : equipos) {
+                bw.write(equipo.getNombreEquipo() + ";");
+                bw.write(equipo.getPartidosJugados() + ";");
+                bw.write(equipo.getPartidosGanados() + ";");
+                bw.write(equipo.getPartidosEmpatados() + ";");
+                bw.write(equipo.getPartidosPerdidos() + ";");
+                bw.write(equipo.getGolesFavor() + ";");
+                bw.write(equipo.getGolesContra() + ";");
+                bw.write(equipo.getDiferenciaGoles()+ ";");
+                bw.write(equipo.getPuntos()+ ";");
             }
             bw.flush();
         } catch (Exception ex) {
@@ -68,7 +76,22 @@ public class AdministracionEquipo {
      }
 
 
-
+     public void cargarArchivo(){
+          Scanner sc = null;
+        equipos = new ArrayList();
+        if (archivoEquipos.exists()) {
+            try {
+                sc = new Scanner(archivoEquipos);
+                sc.useDelimiter(";");
+                while (sc.hasNext()) {
+                    equipos.add(new Equipo(sc.next(),sc.nextInt(),sc.nextInt(),sc.nextInt(),sc.nextInt(),sc.nextInt(),sc.nextInt(),sc.nextInt(),sc.nextInt())
+                    );
+                }
+            } catch (Exception ex) {
+            }
+            sc.close();
+        }
+     }
 
 
 

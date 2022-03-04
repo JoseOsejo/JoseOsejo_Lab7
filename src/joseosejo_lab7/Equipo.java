@@ -13,6 +13,7 @@ public class Equipo
 {
     /*Cada partido ganadado */
     private String nombreEquipo;
+    private int partidosJugados;
     private int partidosGanados;
     private int partidosPerdidos;
     private int partidosEmpatados;
@@ -21,8 +22,9 @@ public class Equipo
     private int diferenciaGoles;
     private int puntos;
 
-    public Equipo(String nombreEquipo, int partidosGanados, int partidosPerdidos, int partidosEmpatados, int golesFavor, int golesContra, int diferenciaGoles, int puntos) {
+    public Equipo(String nombreEquipo, int partidosJugados, int partidosGanados, int partidosPerdidos, int partidosEmpatados, int golesFavor, int golesContra, int diferenciaGoles, int puntos) {
         this.nombreEquipo = nombreEquipo;
+        this.partidosJugados = partidosJugados;
         this.partidosGanados = partidosGanados;
         this.partidosPerdidos = partidosPerdidos;
         this.partidosEmpatados = partidosEmpatados;
@@ -38,6 +40,14 @@ public class Equipo
 
     public void setNombreEquipo(String nombreEquipo) {
         this.nombreEquipo = nombreEquipo;
+    }
+
+    public int getPartidosJugados() {
+        return partidosJugados;
+    }
+
+    public void setPartidosJugados(int partidosJugados) {
+        this.partidosJugados = partidosJugados;
     }
 
     public int getPartidosGanados() {
@@ -98,8 +108,12 @@ public class Equipo
 
     @Override
     public String toString() {
-        return "Equipo{" + "nombreEquipo=" + nombreEquipo + ", partidosGanados=" + partidosGanados + ", partidosPerdidos=" + partidosPerdidos + ", partidosEmpatados=" + partidosEmpatados + ", golesFavor=" + golesFavor + ", golesContra=" + golesContra + ", diferenciaGoles=" + diferenciaGoles + ", puntos=" + puntos + '}';
+        return "Equipo{" + "nombreEquipo=" + nombreEquipo + ", partidosJugados=" + partidosJugados + ", partidosGanados=" + partidosGanados + ", partidosPerdidos=" + partidosPerdidos + ", partidosEmpatados=" + partidosEmpatados + ", golesFavor=" + golesFavor + ", golesContra=" + golesContra + ", diferenciaGoles=" + diferenciaGoles + ", puntos=" + puntos + '}';
     }
+
+    
+
+    
     
     
     
