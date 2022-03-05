@@ -440,10 +440,24 @@ public class TablaPosiciones extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarEquipoActionPerformed
 
     private void simularPartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simularPartidoActionPerformed
-        SimulacionPartido.setVisible(true);
-        SimulacionPartido.setLocationRelativeTo(null);
-        SimulacionPartido.setResizable(false);
-        SimulacionPartido.pack();
+        try {
+            admin.cargarArchivo();
+            DefaultComboBoxModel model = (DefaultComboBoxModel) equipo1.getModel();
+            DefaultComboBoxModel model2 = (DefaultComboBoxModel) equipo2.getModel();
+            for (Equipo equipo : admin.getEquipos()) {
+                model.addElement(equipo);
+                model2.addElement(equipo);
+            }
+            equipo1.setModel(model);
+            equipo2.setModel(model2);
+            SimulacionPartido.setVisible(true);
+            SimulacionPartido.setLocationRelativeTo(null);
+            SimulacionPartido.setResizable(false);
+            SimulacionPartido.pack();
+        } catch (Exception e) {
+
+        }
+
         // TODO add your handling code here:
     }//GEN-LAST:event_simularPartidoActionPerformed
 
@@ -483,7 +497,7 @@ public class TablaPosiciones extends javax.swing.JFrame {
             try {
                 admin.getEquipos().add(new Equipo(equipoNombreTF.getText(), 0, 0, 0, 0, 0, 0, 0, 0));
                 admin.escribirArchivo();
-                
+
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error, no se pudo crear el equipo!");
             }
@@ -503,44 +517,87 @@ public class TablaPosiciones extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cargarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarArchivoActionPerformed
-         try{
+        try {
             admin = new AdministracionEquipo("./Equipos.txt");
             crearEquipo.setEnabled(true);
             modificarEquipo.setEnabled(true);
             eliminarEquipo.setEnabled(true);
             simularPartido.setEnabled(true);
             tablaPosicionesEquipos.setEnabled(true);
-        }catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No se pudo cargar al archivo!");
-        }        
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_cargarArchivoActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int pos = Integer.parseInt(posEquipo.getText());
         admin.getEquipos().get(pos).setNombreEquipo(equipoModif.getText());
-        try {             
-         admin.escribirArchivo();
+        try {
+            admin.escribirArchivo();
             JOptionPane.showMessageDialog(this, "Equipo modificado!");
         } catch (IOException e) {
-           JOptionPane.showMessageDialog(this, "Nose puede modificar el Equipo");
+            JOptionPane.showMessageDialog(this, "Nose puede modificar el Equipo");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         int pos = Integer.parseInt(equipoPosEliminar.getText());
-        try {             
+        try {
             admin.getEquipos().remove(pos);
             admin.escribirArchivo();
             JOptionPane.showMessageDialog(this, "Equipo Eliminado!");
         } catch (IOException e) {
-           JOptionPane.showMessageDialog(this, "No se pudo eliminar");
+            JOptionPane.showMessageDialog(this, "No se pudo eliminar");
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        
+        try {
+            if (equipo1.getSelectedIndex() >= 0 && equipo2.getSelectedIndex() >= 0) {
+                if (equipo1.getSelectedIndex() != equipo2.getSelectedIndex()) {
+                    int golEquipo1 = numeroRandom.nextInt(10);
+                    int golEquipo2 = numeroRandom.nextInt(10);
+                    golesEquipo1.setText(String.valueOf(golEquipo1));
+                    golesEquipo2.setText(String.valueOf(golEquipo2));
+                    Equipo equipo_1 = admin.getEquipos().get(equipo1.getSelectedIndex());
+                    Equipo equipo_2 = admin.getEquipos().get(equipo2.getSelectedIndex());
+                    equipo_1.setPartidosJugados(equipo_1.getPartidosJugados()+ 1);
+                    equipo_2.setPartidosJugados(equipo_2.getPartidosJugados()+ 1);
+                    if (golEquipo1 > golEquipo2) {
+                        equipo_1.setPartidosGanados(equipo_1.getPartidosGanados()+ 1);
+                        equipo_2.setPartidosPerdidos(equipo_2.getPartidosPerdidos()+ 1);
+                        equipo_1.setPuntos(equipo_1.getPuntos()+ 3);
+                    } else if (golEquipo1 < golEquipo2) {
+                        equipo_2.setPartidosGanados(equipo_2.getPartidosGanados()+ 1);
+                        equipo_1.setPartidosPerdidos(equipo_1.getPartidosPerdidos()+ 1);
+                        equipo_2.setPuntos(equipo_2.getPuntos()+ 3);
+                    } else {
+                        equipo_1.setPartidosEmpatados(equipo_1.getPartidosEmpatados()+ 1);
+                        equipo_2.setPartidosEmpatados(equipo_2.getPartidosEmpatados()+ 1);
+                        equipo_1.setPuntos(equipo_1.getPuntos()+ 1);
+                        equipo_2.setPuntos(equipo_2.getPuntos()+ 1);
+                    }
+
+                    equipo_1.setGolesFavor(equipo_1.getGolesFavor() + golEquipo1);
+                    equipo_2.setGolesFavor(equipo_2.getGolesFavor() + golEquipo2);
+
+                    equipo_1.setGolesContra(equipo_1.getGolesContra() + golEquipo1);
+                    equipo_2.setGolesContra(equipo_2.getGolesContra() + golEquipo2);
+
+                    equipo_1.setDiferenciaGoles(equipo_1.getDiferenciaGoles() + (golEquipo1 - golEquipo2));
+                    equipo_2.setDiferenciaGoles(equipo_2.getDiferenciaGoles() + (golEquipo1 - golEquipo2));
+
+                    admin.escribirArchivo();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Mismo Equipo seleccionado");
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error!");
+        }
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -622,5 +679,5 @@ public class TablaPosiciones extends javax.swing.JFrame {
     private javax.swing.JMenuItem tablaPosicionesEquipos;
     // End of variables declaration//GEN-END:variables
 AdministracionEquipo admin = new AdministracionEquipo();
-Random numeroRandom = new Random();
+    Random numeroRandom = new Random();
 }
