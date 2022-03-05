@@ -196,6 +196,11 @@ public class TablaPosiciones extends javax.swing.JFrame {
         );
 
         jButton4.setText("Simulacion");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -427,10 +432,18 @@ public class TablaPosiciones extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void eliminarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarEquipoActionPerformed
+        EliminarEquipo.setVisible(true);
+        EliminarEquipo.setResizable(false);
+        EliminarEquipo.setLocationRelativeTo(null);
+        EliminarEquipo.pack();
         // TODO add your handling code here:
     }//GEN-LAST:event_eliminarEquipoActionPerformed
 
     private void simularPartidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simularPartidoActionPerformed
+        SimulacionPartido.setVisible(true);
+        SimulacionPartido.setLocationRelativeTo(null);
+        SimulacionPartido.setResizable(false);
+        SimulacionPartido.pack();
         // TODO add your handling code here:
     }//GEN-LAST:event_simularPartidoActionPerformed
 
@@ -444,6 +457,10 @@ public class TablaPosiciones extends javax.swing.JFrame {
     }//GEN-LAST:event_crearEquipoActionPerformed
 
     private void modificarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEquipoActionPerformed
+        ModificarEquipo.setVisible(true);
+        ModificarEquipo.setLocationRelativeTo(null);
+        ModificarEquipo.setResizable(false);
+        ModificarEquipo.pack();
         // TODO add your handling code here:
     }//GEN-LAST:event_modificarEquipoActionPerformed
 
@@ -521,6 +538,11 @@ public class TablaPosiciones extends javax.swing.JFrame {
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
